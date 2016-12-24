@@ -11,6 +11,7 @@
 ### 安装
 ```
 git clone https://github.com/lxzan/book-spider.git
+cd book-spider
 npm install (安装速度较慢，建议使用cnpm)
 ```
 > 配置 src/db.js.template的mysql账户密码并将文件文件改名为db.js
