@@ -1,0 +1,33 @@
+const mysql = require('mysql');
+const Promise = require('bluebird');
+
+module.exports = {
+    queryAsync: function(sql, callback) {
+        let connection = mysql.createConnection({
+            host: 'localhost',
+            user: '',
+            password: '',
+            database: 'spider'
+        });
+        connection.connect();
+
+        connection.query(sql, function(err, rows) {
+            callback(err, rows);
+        });
+
+        connection.end();
+    },
+
+    querySync: async function (sql, params) {
+        if(params !== undefined) {
+            for (var key in params) {
+                sql = sql.replace(key, '\'' + params[key] + '\'');
+            }
+        }
+
+        let query = Promise.promisify(this.queryAsync);
+        let result = await query(sql);
+        return result;
+    }
+
+};
