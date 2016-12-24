@@ -61,6 +61,10 @@ module.exports = {
         let title = $("meta[property='og:novel:book_name']").attr('content');
         download_path = './download/' + title;
 
+        if (!fs.existsSync('./download')) {
+            fs.mkdirSync('./download');
+        }
+
         if (!fs.existsSync(download_path)) {
             fs.mkdirSync(download_path);
         }
