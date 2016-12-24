@@ -28,6 +28,8 @@ build/Release
 
 # Dependency directories
 node_modules
+download
+src/db.js
 jspm_packages
 
 # Optional npm cache directory

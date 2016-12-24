@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "async": "^2.1.4",
     "bluebird": "^3.4.7",
     "cheerio": "^0.22.0",
     "cron": "^1.2.1",

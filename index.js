@@ -1,14 +1,11 @@
 (async function() {
     var arguments = process.argv.splice(2);
-    const Spider = require('./src/spider');
-    let book = new Spider(arguments[0]);
-
+    const spider = require('./src/spider');
     console.log('开始下载');
-    await book.loader();
-    await book.downloadAll();
-
+    await spider.loader(arguments[0]);
+    await spider.run();
     var cronJob = require("cron").CronJob;
-    new cronJob('*/30 * * * * *', function() {
-        book.downloadAll();
+    new cronJob('*/20 * * * * *', async function() {
+        await spider.run();
     }, null, true, 'Asia/Shanghai');
 })();
